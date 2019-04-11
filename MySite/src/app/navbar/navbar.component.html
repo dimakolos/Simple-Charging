@@ -1,0 +1,20 @@
+<header>
+  <nav class="navbar navbar-custom" role="navigation">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a routerLink="balance">Balance</a></li>
+          <li><a routerLink="subscriptions">Subscriptions</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown">{{this.logUser.getLogin()}}<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a routerLink="/" (click)="quitclick()">Quit Account</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

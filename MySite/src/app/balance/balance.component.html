@@ -1,0 +1,76 @@
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6" >
+        <h1><span class="align-text-top">Balance</span></h1>
+      </div>
+      <div class="col-md-6">
+        <h1><span id="balance" class="align-top">{{this.logUser.getBalance()}} byn</span></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <button class="btn btn-info"
+                (click) = "showModal()"
+        >Top up account</button>
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-info"
+                (click)="updateBalance()"
+                >Update balance</button>
+      </div>
+    </div>
+    <div class="row">
+    </div>
+  </div>
+
+</main>
+
+<ng-template #addBalance>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4"><p class="text-center h1">Account replenishment</p></div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4"><p class="text-center h3">Please enter all blank fields.</p></div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Сredit card number">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-4">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Validity">
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="cvv">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="form-group">
+          <input type="text"
+                 class="form-control"
+                 placeholder="Sum(byn)"
+                 (change) = "plusBalance($event.target.value)"
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="form-group">
+          <button class="btn btn-info" (click)="modalRef.hide()">Top up balance</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

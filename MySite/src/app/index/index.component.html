@@ -1,0 +1,105 @@
+
+<div class="backcol">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4"><h1><p class="text-center headline">Simple Charging</p></h1></div>
+      <div class="col-md-4"><img class="img img-responsive" src="../assets/logo.png" alt="LOGO"/></div>
+      <div class="col-md-4">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <h5><p class="text-center">To continue you need to pass authentification</p></h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+                <input type="text" class="form-control" [value] = "userInfo.login" (change)="userInfo.login" placeholder="login" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input type="text" class="form-control" [value] = "password" (change)="password" placeholder="password" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12" *ngIf="loginn === 'admin'; else adminsign">
+              <button
+                class="btn btn-info btn-block"
+                routerLink="balance"
+                (click) = "userInfo.isLogged = true; userInfo.isAdmin = true;"
+              >Sign In</button>
+              <ng-template #adminsign>
+                <div class="col-md-12">
+                <button
+                class="btn btn-info btn-block"
+                routerLink="balance"
+                (click) = "userInfo.isLogged = true;"
+                >Sign In</button>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h5>Don't have an account yet?</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <button class="btn btn-info btn-block" routerLink="register">Sign Up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <h1><p class="text-center">This Resourse will help you stupid user:</p></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <img class="img img-responsive" src="../assets/logotypes.png" />
+        <!--<img class="img img-responsive img-rounded img-thumbnail" src="../assets/SaveMoney.jpg" />-->
+      </div>
+    </div>
+    <!--<div class="row">-->
+      <!--<div class="col-md-3">-->
+        <!---->
+
+      <!--</div>-->
+      <!--<div class="col-md-3">-->
+        <!---->
+
+      <!--</div>-->
+      <!--<div class="col-md-3">-->
+        <!---->
+
+      <!--</div>-->
+      <!--<div class="col-md-3">-->
+        <!---->
+
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+      <!--<div class="col-md-3">-->
+        <!--<p class="text-center h3">Get rid of unnecessary displayedSubs</p>-->
+        <!--<img class="img img-responsive img-rounded img-thumbnail" src="../assets/GoodMan.jpg" />-->
+      <!--</div>-->
+      <!--<div class="col-md-3">-->
+        <!--<p class="text-center h3">Save Your money</p>-->
+        <!--<img class="img img-responsive img-rounded img-thumbnail" src="../assets/SaveMoney.jpg" />-->
+      <!--</div>-->
+      <!--<div class="col-md-3">-->
+        <!--<p class="text-center h3">Save Your time</p>-->
+        <!--<img class="img img-responsive img-rounded img-thumbnail" src="../assets/SaveTime.jpg" />-->
+      <!--</div>-->
+      <!--<div class="col-md-3">-->
+        <!--<p class="text-center h3">Find really useful products for You.</p>-->
+        <!--<img class="img img-responsive img-rounded img-thumbnail" src="../assets/GoodProducts.jpg" />-->
+      <!--</div>-->
+    <!--</div>-->
+  </div>
+</div>

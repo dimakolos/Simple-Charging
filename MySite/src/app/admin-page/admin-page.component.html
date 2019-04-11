@@ -1,0 +1,161 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="nav nav-tabs nav-stacked">
+        <li><a (click)="viewController = true">Users</a></li>
+        <li><a (click)="viewController = false">Products</a></li>
+      </ul>
+    </div>
+    <div class="col-md-9" *ngIf="viewController">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>UserName</th>
+          <th>Amount</th>
+          <th>Balance</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr
+          *ngFor = "let user of users"
+        >
+          <td>{{user.login}}</td>
+          <td>{{user.amount}}</td>
+          <td>{{user.balance}}</td>
+          <td>
+
+            <button class="btn btn-info" *ngIf="user.blocked"
+                    (click)="user.blocked = false"
+            >Unblock
+            </button>
+
+
+            <button class="btn btn-info" *ngIf="!user.blocked"
+                    (click)="user.blocked = true"
+            >Block
+            </button>
+
+          </td>
+          <td><button class="btn btn-info" >View profile</button></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="!viewController">
+    <div class="col-md-9">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>ProductName</th>
+          <th>Number of subscribers</th>
+          <th>Сost</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let subscription of subscriptions; let i = index">
+          <td>{{subscription.name}}</td>
+          <td>{{subscription.subscribers}}</td>
+          <td>{{subscription.cost}}</td>
+          <td>
+
+                <button
+                  class="btn btn-default"
+                  (click)="editSubscription(i)"
+                >Edit</button>
+          </td>
+          <td>
+                <button
+                  class="btn btn-default"
+                  (click)="deleteSubscription(i)"
+                >Delete</button>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-md-9 col-md-offset-3">
+        <button class="btn btn-info" (click)="showModal(template)" >Add product</button>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #addTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add new subscription</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <input
+            type="text"
+            class="form-control"
+            (change)="addSubscriptionName = $event.target.value"
+            placeholder="name"
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <input
+            type="text"
+            class="form-control"
+            (change)="addSubscriptionCost = $event.target.value"
+            placeholder="cost"
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+    <button
+      class="btn btn-primary"
+      (click)="addSubcription()"
+    >Add Subscription</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #editTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Subcription</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <input
+            type="text"
+            [value]="currentEditSubscription.name"
+            (change)="currentEditSubscription.name = $event.target.value"
+            placeholder="name"
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <input
+            type="text"
+            [value]="currentEditSubscription.cost"
+            (change)="currentEditSubscription.cost = $event.target.value"
+            placeholder="cost"
+          >
+        </div>
+      </div>
+
+    </div>
+  </div>
+</ng-template>

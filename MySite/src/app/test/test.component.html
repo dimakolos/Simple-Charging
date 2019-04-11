@@ -1,0 +1,20 @@
+<ng4-loading-spinner></ng4-loading-spinner>
+<table>
+  <tr
+    class="user"
+    *ngFor="let subscription of users; let i = index"
+  >
+    <td class="name">{{subscription.name}}</td>
+
+  </tr>
+</table>
+<p *ngIf="contains()">true</p>
+<p *ngIf="!contains()">false</p>
+<button class="btn btn-info" (click)="sendPost()">post request</button>
+
+<table class="table">
+  <tr>
+    <td>afdf</td>
+    <td>dsf</td>
+  </tr>
+</table>

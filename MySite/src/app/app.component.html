@@ -1,0 +1,106 @@
+
+<div class="backcol" *ngIf="!userInfo.isLogged">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4"><h1><p class="text-center headline">Simple Charging</p></h1></div>
+      <div class="col-md-4"><img class="img img-responsive" src="../assets/logo.png" alt="LOGO"/></div>
+      <div class="col-md-4">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <h5><p class="text-center">To continue you need to pass authentification</p></h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <input type="text" class="form-control"
+                       placeholder="login"
+                       [value]="login"
+                       (change)="login = $event.target.value"
+                       maxlength="45"
+                >
+              </div>
+              <div [hidden]="!login.errors?.maxlength" class="alert alert-danger">
+                Login is too long!!!
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="password"
+                       [value]="password"
+                       (change)="password = $event.target.value"
+                       maxlength="45"
+                       minlength="3"
+                >
+              </div>
+              <div [hidden]="!password.errors?.maxlength" class="alert alert-danger">
+                Password is too long
+              </div>
+              <div [hidden]="!password.errors?.minlength" class="alert alert-danger">
+                Password is too small
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <button
+                class="btn btn-info btn-block"
+                *ngIf="userInfo.login == 'admin' && userInfo.password == 'admin'; else adminsign"
+                routerLink="adminpage"
+                (click) = "adminclick()"
+                [disabled]="password === '' || login === '' || password.errors?.maxlength ||
+                 login.errors?.maxlength || password.errors?.minlength"
+              >Sign In</button>
+              <ng-template #adminsign>
+                <button
+                  class="btn btn-info btn-block"
+                  routerLink="balance"
+                  (click) = "userclick()"
+                  [disabled]="password === '' || login === '' || password.errors?.maxlength ||
+                    login.errors?.maxlength || password.errors?.minlength"
+                >Sign In</button>
+              </ng-template>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h5>Don't have an account yet?</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <button
+                class="btn btn-info btn-block"
+                routerLink="register"
+                (click) = "registerclick()"
+              >Sign Up
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <h1><p class="text-center">We provide a wide range of applications</p></h1>
+      </div>s
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <img class="img img-responsive" src="../assets/logotypes.png" alt="logospicture"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-navbar *ngIf="userInfo.isLogged"></app-navbar>
+
+
+
+<router-outlet *ngIf="userInfo.isLogged"></router-outlet>
+<!--<router-outlet name = "content"></router-outlet>-->

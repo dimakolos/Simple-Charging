@@ -1,0 +1,5 @@
+[ {"name": "name", "cost": "15", "subscribe": false, "subscribers": 0},
+  {"name": "word", "cost": 10, "subscribe": true, "subscribers": 0},
+  {"name": "powerpoint", "cost": 10, "subscribe": true, "subscribers": 0},
+  {"name": "viewer", "cost": 45, "subscribe": false, "subscribers": 0}
+]

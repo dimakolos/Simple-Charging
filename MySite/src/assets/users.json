@@ -1,0 +1,38 @@
+[
+  {
+    "login": "TheKing",
+    "password": "1234qwer",
+    "balance": 200,
+    "subscriptions": ["word", "powerpoint"],
+    "name": "Dima",
+    "surname": "Kolos",
+    "birthday": "15.02.1999",
+    "email": "dima@gmail.com",
+    "isAdmin": true,
+    "blocked": false
+  },
+  {
+    "login": "casualUser",
+    "password": "12345",
+    "balance": 20,
+    "subscriptions": ["word", "powerpoint"],
+    "name": "Ivan",
+    "surname": "Ivanov",
+    "birthday": "19.05.1998",
+    "email": "ivan@gmail.com",
+    "isAdmin": false,
+    "blocked": false
+  },
+  {
+    "login": "casualUser2",
+    "password": "54321",
+    "balance": 29,
+    "subscriptions": ["powerpoint"],
+    "name": "Petr",
+    "surname": "Petrov",
+    "birthday": "25.06.1994",
+    "email": "petr@gmail.com",
+    "isAdmin": false,
+    "blocked": false
+  }
+]

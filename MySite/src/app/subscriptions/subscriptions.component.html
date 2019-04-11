@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="nav nav-tabs nav-stacked">
+        <li>
+          <button class="btn btn-default btn-block" (click)="showSubscribed()">Subscribed</button>
+        </li>
+        <li>
+          <button class="btn btn-default btn-block" (click)="showUnsubscribed()">Unsubscribed</button>
+        </li>
+        <li>
+          <button class="btn btn-default btn-block" (click)="showAll()">All products</button>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <input type="text" class="form-control" [(ngModel)]="search" placeholder="Search">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <button type="submit" class="btn btn-default">Search</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Cost</th>
+                <th>Number of subcribers</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr
+                class="subscription"
+                *ngFor="let subscription of filter(displayedSubs)">
+
+                <td>{{subscription.name}}</td>
+                <td>{{subscription.cost}}</td>
+                <td>{{subscription.subscribers}}</td>
+                <td>
+
+                  <button class="btn btn-info" *ngIf="!contains(this.logUser.getSubscriptions(), subscription)"
+                          (click)="subscribeClick(subscription)"
+                          [disabled]="checkSolvency(subscription)"
+                  >Subscribe
+                  </button>
+
+
+                  <button class="btn btn-info" *ngIf="contains(this.logUser.getSubscriptions(), subscription)"
+                          (click)="unsubscribeClick(subscription)"
+                  >Unsubscribe
+                  </button>
+
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
